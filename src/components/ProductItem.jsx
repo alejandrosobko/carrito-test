@@ -1,12 +1,16 @@
 import * as React from 'react';
 
-export default () =>
-  <div className='product-wrapper'>
-    <div>Titulo</div>
-    <div className='content'>
-      <div className='product-image' />
-      <div className='price'>$200</div>
-      <div className='description'>Mi producto</div>
-      <button>Más detalle</button>
+export default function(propiedades) {
+  return (
+    <div className='product-wrapper'>
+      <div>{propiedades.title}</div>
+      <div className='content' data-id={propiedades.title}>
+        <img alt='blablala' src={propiedades.image} />
+        <div className='price'>{propiedades.price}</div>
+        <div className='description'>{propiedades.description}</div>
+        <button>Info</button>
+        <button onClick={propiedades.hacerClick}>Agregar al carrito</button>
+      </div>
     </div>
-  </div>
+  )
+}
