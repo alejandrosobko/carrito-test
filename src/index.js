@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { HashRouter, Switch, Route } from 'react-router-dom';
+import Nosotros from './Nosotros';
+import Ofertas from './Ofertas';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,12 +14,12 @@ ReactDOM.render(
         <Route exact path="/">
           <App />
         </Route>
-        {/*<Route path="/about">
-          <About />
+        <Route path="/nosotros">
+          <Nosotros />
         </Route>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>*/}
+        <Route path="/ofertas">
+          <Ofertas />
+        </Route>
       </Switch>
     </HashRouter>
   </React.StrictMode>,

@@ -5,25 +5,23 @@ export default class ProductItem extends React.Component {
 
   constructor(props){
     super(props)
-    console.log(props);
 
     this.state = {
       show: false
-      
+
     }
     this.abrirModal = this.abrirModal.bind(this);
   }
-  
+
   abrirModal(){
     this.setState({show: !this.state.show});
   }
 
   render(){
     return (
-      <div className="d-inline"> 
+      <div className="d-inline">
         <Modal
           show={this.state.show}
-          onHide={false}
           backdrop="static"
           keyboard={false}
         >
