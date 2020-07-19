@@ -6,10 +6,14 @@ import * as serviceWorker from './serviceWorker';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import Nosotros from './Nosotros';
 import Ofertas from './Ofertas';
+import Header from './components/Header';
+import NotFound from './NotFound';
 
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
+      <Header total={0} />
+
       <Switch>
         <Route exact path="/">
           <App />
@@ -19,6 +23,9 @@ ReactDOM.render(
         </Route>
         <Route path="/ofertas">
           <Ofertas />
+        </Route>
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
     </HashRouter>
