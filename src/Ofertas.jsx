@@ -3,14 +3,23 @@ import data from './data.js'
 import ProductItem from './components/ProductItem.jsx';
 
 
-const Ofertas = () => {
-  console.log(data);
+export default () => {
+  const addProduct = () => console.log('hola')
+  const productosEnOferta = data.filter((e) => priceToNumber(e.price) <= 0);
 
-  return (
-    <div>
-      {data.map((e) => <ProductItem key={e.title} title={e.title} description={e.description} price={e.price} image={e.image} hacerClick={this.addProduct} />)}
-    </div>
-  )
+  if (productosEnOferta.length) {
+    return (
+      <div className='container'>
+        {productosEnOferta.map((e) => <ProductItem key={e.title} title={e.title} description={e.description} price={e.price} image={e.image} hacerClick={addProduct} />)}
+      </div>
+    )
+  } else {
+    return (
+      <div className='container'>No hay productos para mostrar</div>
+    )
+  }
 }
 
-export default Ofertas
+function priceToNumber(price) {
+  return parseInt(price.split('$')[1])
+}
