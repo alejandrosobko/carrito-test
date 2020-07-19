@@ -5,7 +5,7 @@ import ProductItem from './components/ProductItem.jsx';
 
 export default () => {
   const addProduct = () => console.log('hola')
-  const productosEnOferta = data.filter((e) => priceToNumber(e.price) <= 0);
+  const productosEnOferta = data.filter((e) => priceToNumber(e.price) <= 100);
 
   if (productosEnOferta.length) {
     return (
