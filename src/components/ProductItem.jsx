@@ -1,27 +1,20 @@
 import * as React from 'react';
+import {useState} from 'react';
 import Modal from 'react-bootstrap/Modal'
 
-export default class ProductItem extends React.Component {
 
-  constructor(props){
-    super(props)
+  const ProductItem = ({title, image, price, description, hacerClick}) =>{
+  
+  const [ show, setShow] = useState(false);
 
-    this.state = {
-      show: false
-
-    }
-    this.abrirModal = this.abrirModal.bind(this);
+  const abrirModal = () => {
+    setShow(!show);
   }
 
-  abrirModal(){
-    this.setState({show: !this.state.show});
-  }
-
-  render(){
-    return (
+      return (
       <div className="d-inline">
         <Modal
-          show={this.state.show}
+          show={show}
           backdrop="static"
           keyboard={false}
         >
@@ -33,24 +26,26 @@ export default class ProductItem extends React.Component {
             escape key.
           </Modal.Body>
           <Modal.Footer>
-            <button variant="secondary" onClick={this.abrirModal}>
+            <button variant="secondary" onClick={() => abrirModal()}>
               Close
             </button>
-            <button variant="primary" onClick={this.abrirModal}>Understood</button>
+            <button variant="primary" onClick={() => abrirModal()}>Understood</button>
           </Modal.Footer>
         </Modal>
 
         <div className='product-wrapper'>
-          <div>{this.props.title}</div>
-          <div className='content' data-id={this.props.title}>
-            <img alt='blablala' src={this.props.image} />
-            <div className='price'>{this.props.price}</div>
-            <div className='description'>{this.props.description}</div>
-            <button className="btn btn-info btn-sm mr-" onClick={this.abrirModal}>Info</button>
-            <button className="btn btn-outline-secondary btn-sm" onClick={this.props.hacerClick}>Agregar al carrito</button>
+          <div>{title}</div>
+          <div className='content' data-id={title}>
+            <img alt='blablala' src={image} />
+            <div className='price'>{price}</div>
+            <div className='description'>{description}</div>
+            <button className="btn btn-info btn-sm mr-" onClick={() => abrirModal()}>Info</button>
+            <button className="btn btn-outline-secondary btn-sm" onClick={hacerClick} >Agregar al carrito</button>
           </div>
         </div>
       </div>
     )
-  }
+  
 }
+
+export default ProductItem;
