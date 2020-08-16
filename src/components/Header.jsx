@@ -2,7 +2,7 @@ import * as React from 'react';
 import logo from '../logo.svg'
 import { Link } from 'react-router-dom';
 
-export default (props) =>
+const Header = ({total, hacerClick}) =>
 <nav className="navbar navbar-expand-md navbar-light bg-secondary sticky-top">
   <div className="container-fluid">
       <a href="#/" className="navbar-brand w-25"><img src={logo} className="rounded-circle w-25" alt="logo" /></a>
@@ -12,7 +12,7 @@ export default (props) =>
       <div id="navbarResponsive" className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto">
               <li className="navbar-item">
-                  <a href="#a" className="nav-link text-light bg-primary rounded">Productos <span className="badge-light"> {props.total} </span></a>
+                  <button className="nav-link text-light bg-primary rounded" onClick={hacerClick}>Productos <span className="badge-light"> {total} </span></button>
               </li>
               <li className="navbar-item">
                   <Link to='ofertas' className="nav-link text-light">Ofertas</Link>
@@ -25,15 +25,4 @@ export default (props) =>
   </div>
 </nav>
 
-
-
-/*
-<div className="header">
-    <img src={logo} className="logo-img" alt="logo" />
-    <div className="panel-derecho">
-      <a href='productos.html'>Productos ({props.total})</a>
-      <a href='#a'>Ofertas</a>
-      <a href='#a'>Nosotros</a>
-    </div>
-  </div>
-*/
+export default Header;

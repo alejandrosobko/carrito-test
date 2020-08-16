@@ -1,36 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './assets/styles/App.scss';
 import Header from './components/Header';
 import ProductItem from './components/ProductItem';
 import data from './data.js'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props)
+const App = () => {
 
-    this.state = {
-      products: []
-    }
+  const [ mostrar, cambiarMostrar] = useState(true);
 
-    this.addProduct = this.addProduct.bind(this);
+  const [ products, actualizarProducts ] = useState([]);
+
+  const addProduct = id => {
+    const producto = data.filter(producto => producto.id === id);
+    actualizarProducts([
+      ...products, producto[0]
+    ]);
   }
 
-  addProduct(event) {
-    const products = this.state.products;
-    products.push(1); // guardar ID buscandolo en event.currentTarget y aca buscar el data-id
-    this.setState({products: products});
+  const changeMostrar = () => {
+    cambiarMostrar(false);
   }
 
-  render() {
     return (
       <div className="App">
-        <Header total={this.state.products.length} />
+        <Header total={products.length} hacerClick={() => changeMostrar()} />
+        {mostrar ? 
         <div className="container">
-          {data.map((e) => <ProductItem key={e.title} title={e.title} description={e.description} price={e.price} image={e.image} hacerClick={this.addProduct} />)}
+          {data.map((e) => <ProductItem key={e.title} title={e.title} description={e.description} price={e.price} image={e.image} hacerClick={() => addProduct(e.id)} />)}
+        </div> :
+        <div className="container">
+          {products.map((e) => <ProductItem key={e.title} title={e.title} description={e.description} price={e.price} image={e.image} hacerClick={() => addProduct(e.id)} />)}
         </div>
+        }
+        
       </div>
     );
-  }
 }
 
 export default App;
