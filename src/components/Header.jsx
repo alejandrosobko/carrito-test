@@ -2,7 +2,7 @@ import * as React from 'react';
 import logo from '../logo.svg'
 import { Link } from 'react-router-dom';
 
-const Header = ({total, hacerClick}) =>
+const Header = ({total, hacerClick, darClick}) =>
 <nav className="navbar navbar-expand-md navbar-light bg-secondary sticky-top">
   <div className="container-fluid">
       <a href="#/" className="navbar-brand w-25"><img src={logo} className="rounded-circle w-25" alt="logo" /></a>
@@ -12,13 +12,13 @@ const Header = ({total, hacerClick}) =>
       <div id="navbarResponsive" className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto">
               <li className="navbar-item">
-                  <button className="nav-link text-light bg-primary rounded" onClick={hacerClick}>Productos <span className="badge-light"> {total} </span></button>
+                  <button className="nav-link text-light bg-primary rounded" onClick={hacerClick}>Carrito <span className="badge-light"> {total} </span></button>
               </li>
               <li className="navbar-item">
                   <Link to='ofertas' className="nav-link text-light">Ofertas</Link>
               </li>
               <li className="navbar-item">
-                  <Link to='nosotros' className="nav-link text-light">Nosotros</Link>
+                  <button to='nosotros' className="nav-link text-light bg-primary rounded" onClick={darClick}>Productos</button>
               </li>
           </ul>
       </div>

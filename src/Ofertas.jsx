@@ -4,7 +4,7 @@ import ProductItem from './components/ProductItem.jsx';
 
 
 const Ofertas = () => {
-  console.log(data);
+  const addProduct = () => console.log('hola')
 
   return (
     <div>
@@ -12,4 +12,4 @@ const Ofertas = () => {
     </div>
   )
 }
-export default Ofertas
+export default Ofertas;

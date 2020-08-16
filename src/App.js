@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './assets/styles/App.scss';
-import Header from './components/Header';
 import ProductItem from './components/ProductItem';
-import data from './data.js'
+import data from './data.js';
+import Header from './components/Header';
 
 const App = () => {
 
@@ -21,9 +21,13 @@ const App = () => {
     cambiarMostrar(false);
   }
 
+  const changeMostrarTrue = () => {
+    cambiarMostrar(true);
+  }
+
     return (
       <div className="App">
-        <Header total={products.length} hacerClick={() => changeMostrar()} />
+        <Header total={products.length} hacerClick={() => changeMostrar()} darClick={() => changeMostrarTrue()} />
         {mostrar ? 
         <div className="container">
           {data.map((e) => <ProductItem key={e.title} title={e.title} description={e.description} price={e.price} image={e.image} hacerClick={() => addProduct(e.id)} />)}
